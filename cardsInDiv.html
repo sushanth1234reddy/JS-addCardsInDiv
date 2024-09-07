@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Cards in Div Using mouse Events</title>
+    <style>
+        #mainDiv{
+            border: 2px solid rgb(122, 122, 211);
+            height: 400px;
+            width: 600px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-around;
+            align-items: center;
+            background-image: url(backimg.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 10px;
+            border-radius: 2%;
+            overflow-y: scroll;
+            scrollbar-width: none;
+            
+            
+        }
+        .min{
+            border:2px solid green;
+            height: 180px;
+            width: 100px;
+            text-align: center;
+        }
+        button{
+            color: white;
+            background-color: black;
+           
+            height: 40px;
+            width: 100px;
+            border-radius: 10px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            font-style: normal;
+            margin-left: 250px;
+
+        }
+        button:hover{
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    
+    <h3>Click "Add Hero" button to add Cards to Div and scroll to see the cards </h3>
+    <div id="mainDiv">
+       
+
+    </div>
+    <br>
+    <button id="enterValue">Add Hero</button>
+    <script>
+        
+        let mainD=document.getElementById("mainDiv");
+        let btn=document.getElementById("enterValue");
+        let hero=["iron man","Captain America","SpiderMan","Captain Marvel","Black Panter","Ant-Man","Wolwarine","Deadpool"];
+        let heropics=["ironman.jpg","cp.jpg","spider.jpg","marvel.jpg","panther.jpg","antman.jpg","wovl.jpg","deadpool.jpg"];
+        let role=["Co-Captain","Captain","Tactical Master","Strongest Marvel","Leader of Wakanda ","purugu","One Man Army","Mod Killer"]
+         let heroCount=0;
+        btn.addEventListener("click",(e)=>
+    {
+        e.preventDefault();
+        let cdiv=document.createElement("div");
+        let img1=document.createElement("img");
+
+
+       cdiv.style.border="2px solid black";
+       cdiv.style.display="flex";
+       cdiv.style.flexDirection="column";
+       cdiv.style.alignItems="space-around";
+       cdiv.style.padding="10px 10px 0px 10px";
+       
+       
+       
+       
+       
+
+    //    let piclen=heropics.length;
+    //    let randpic=Math.floor(Math.random()*piclen);
+
+    //    img1.setAttribute("src",heropics[randpic]);
+       
+       
+
+       cdiv.style.height="180px";
+       cdiv.style.width="100px";
+       cdiv.style.textAlign="centre";
+       
+       let len=hero.length;
+       let rand=Math.floor(Math.random()*len);
+       cdiv.innerHTML=`<b> ${hero[rand]} </b> 
+          
+        <i>${role[rand]}</i> `;
+
+        img1.setAttribute("src",heropics[rand]);
+        img1.style.borderRadius="10%";
+       
+       
+       cdiv.style.backgroundColor="white";
+       cdiv.style.borderRadius="10%";
+       
+
+       
+        cdiv.appendChild(img1);
+        mainD.appendChild(cdiv);
+       
+    });
+     
+    </script>
+    
+</body>
+</html>
